@@ -9,7 +9,7 @@ function addContext() {
 }
 function saveToStorage(value) {
   var obj = {};
-  obj.parentId = tabbyId;
+  obj.parentId = tabiId;
   obj.url = value;
   obj.title = value;
   chrome.bookmarks.create(obj);
@@ -25,8 +25,7 @@ function saveAndCloseCurrent() {
   });
 }/*
 function adderUI(key, data) {
-  $('#closed').append('<li><a href="'+ data +'">' + data + "</a><button onclick='removeFromStorage(" + key + ")'>remove</button></li>"); 
-  // guess why iam here
+  $('#closed').append('<li><a href="'+ data +'">' + data + "</a><button onclick='removeFromStorage(" + key + ")'>remove</button></li>");
 }*//* 
 function savedIterator() {
   for (var property in saved) {
@@ -35,8 +34,8 @@ function savedIterator() {
     }
   }
 }*/
-function retriveAllTabby() {
-  chrome.bookmarks.getChildren(tabbyId, function(children) {
+function retrieveAllTabi() {
+  chrome.bookmarks.getChildren(tabiId, function(children) {
     children.forEach(function(bookmark) { 
       console.dir(bookmark);
       saved[bookmark.id] = bookmark;
@@ -44,25 +43,25 @@ function retriveAllTabby() {
   });
 }
 function initializeBookmarksDB() {
-  chrome.bookmarks.search("Tabby", function(data){
+  chrome.bookmarks.search("Tabi", function(data){
     if(!data.length>0){
       var obj = {};
       obj.parentId = '2';
       obj.url = null;
-      obj.title = "Tabby"
+      obj.title = "Tabi"
 
       chrome.bookmarks.create(obj, function(data){
-        tabbyId = data.id;
+        tabiId = data.id;
       });
 
     } else {
-      tabbyId = data[0].id;
-      retriveAllTabby();
+      tabiId = data[0].id;
+      retrieveAllTabi();
     }
   })
 }
 addContext();
-var tabbyId;
+var tabiId;
 var saved = {};
 initializeBookmarksDB();
 

@@ -6,8 +6,6 @@ $(function() {
     $( "#tabs" ).tabs();
   });
 
-
-
 $(function() {
   $(".stored_tab").click(function() {
     removeFromStorage($(this).attr("id"));
