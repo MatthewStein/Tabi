@@ -20,7 +20,6 @@ function removeFromStorage(key) { // it should be id so save[object].id
 function saveAndCloseCurrent() {
   chrome.tabs.getSelected(null, function(tab){
     saveToStorage(tab.url);
-    urlStrings.append(tab.url);
     chrome.tabs.remove(tab.id);
   });
 }
@@ -64,7 +63,7 @@ function initializeBookmarksDB() {
 }
 addContext();
 var tabiId;
-window.saved = ["hello", "bye"];
+window.saved = ["facebook", "google", "amazon", "reddit", "tumblr", "pinterest", "venmo"];
 initializeBookmarksDB();
 
 chrome.commands.onCommand.addListener(function(command) {
@@ -89,16 +88,14 @@ var nodes = [];
 var labelAnchors = [];
 var labelAnchorLinks = [];
 var links = [];
-var urlStrings = ["facebook", "google", "amazon", "reddit", "tumblr", "pinterest", "venmo"];
-console.log(window.saved);
 // var port = chrome.runtime.connect({name:"background.js"});
 // port.onMessage.addListener(function(message,sender){
 //   console.log(message);
 // });
 
-for(var i = 0; i < urlStrings.length; i++) {
+for(var i = 0; i < window.saved.length; i++) {
 	var node = {
-		label : urlStrings[i]
+		label : window.saved[i]
 	};
 	nodes.push(node);
 	labelAnchors.push({
