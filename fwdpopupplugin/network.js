@@ -82,7 +82,7 @@ chrome.commands.onCommand.addListener(function(command) {
 var w = 500, h = 400;
 var labelDistance = 0;
 
-var vis = d3.select("body").append("svg:svg").attr("width", w).attr("height", h);
+var vis = d3.select("#closed").append("svg:svg").attr("width", w).attr("height", h);
 
 var nodes = [];
 var labelAnchors = [];

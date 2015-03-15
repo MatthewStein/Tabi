@@ -1,6 +1,6 @@
 body {
   width: 500px;
-  height: 1200px;
+  height: 560px;
 }
 h1 {
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
@@ -93,7 +93,7 @@ img {
    -moz-border-left-colors: none;
    -moz-border-right-colors: none;
    -moz-border-top-colors: none;
-   background-color: white;
+   background-color: white !important;
    border-color: #CCCCCC;
    border-style: solid;
    border-width: 1px 1px 0;
@@ -107,3 +107,15 @@ img {
 a:focus{
  outline: none !important;
 }
+
+kbd {
+  background-color: #ededed;
+  border-color: #dddddd;
+  color: #222222;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0;
+  font-family: "Consolas", "Menlo", "Courier", monospace;
+  font-size: inherit;
+  padding: 0.125rem 0.25rem 0;
+  border-radius: 3px; }
