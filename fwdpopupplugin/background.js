@@ -1,6 +1,6 @@
 function addContext() {
   var obj = {};
-  obj.title = 'Add link for later.AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
+  obj.title = 'Add link for later.';
   obj.contexts = ["link"]
   obj.onclick = function(data){
     saveToStorage(data.linkUrl);
@@ -20,6 +20,7 @@ function removeFromStorage(key) { // it should be id so save[object].id
 function saveAndCloseCurrent() {
   chrome.tabs.getSelected(null, function(tab){
     saveToStorage(tab.url);
+    urlStrings.append(tab.url);
     chrome.tabs.remove(tab.id);
   });
 }
@@ -37,7 +38,7 @@ function retrieveAllTabi() {
   chrome.bookmarks.getChildren(tabiId, function(children) {
     children.forEach(function(bookmark) { 
       console.dir(bookmark);
-      saved[bookmark.id] = bookmark;
+      window.saved[bookmark.id] = bookmark;
     });
   });
 }
@@ -61,7 +62,7 @@ function initializeBookmarksDB() {
 }
 addContext();
 var tabiId;
-var saved = {};
+window.saved = {"hello", "bye"};
 initializeBookmarksDB();
 
 chrome.commands.onCommand.addListener(function(command) {
@@ -69,3 +70,7 @@ chrome.commands.onCommand.addListener(function(command) {
     saveAndCloseCurrent();
   }
 });
+
+// chrome.runtime.onConnect.addListener(function(port){
+//   port.postMessage({"hello", "goodbye", "good evening"});
+// });

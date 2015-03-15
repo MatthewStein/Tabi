@@ -1,16 +1,104 @@
-var w = 960, h = 500;
+function addContext() {
+  var obj = {};
+  obj.title = 'Add link for later.';
+  obj.contexts = ["link"]
+  obj.onclick = function(data){
+    saveToStorage(data.linkUrl);
+  }
+  chrome.contextMenus.create(obj);
+}
+function saveToStorage(value) {
+  var obj = {};
+  obj.parentId = tabiId;
+  obj.url = value;
+  obj.title = value;
+  chrome.bookmarks.create(obj);
+}
+function removeFromStorage(key) { // it should be id so save[object].id
+  chrome.bookmarks.remove(key);
+}
+function saveAndCloseCurrent() {
+  chrome.tabs.getSelected(null, function(tab){
+    saveToStorage(tab.url);
+    urlStrings.append(tab.url);
+    chrome.tabs.remove(tab.id);
+  });
+}
+//function adderUI(key, data) {
+//  $('#closed').append('<li><a href="'+ data +'">' + data + "</a><button onclick='removeFromStorage(" + key + ")'>remove</button></li>");
+//}
+//function savedIterator() {
+//  for (var property in saved) {
+//    if (saved.hasOwnProperty(property)) {
+//      adderUI(property, saved[property]);
+//    }
+//  }
+//}
+function retrieveAllTabi() {
+  chrome.bookmarks.getChildren(tabiId, function(children) {
+    children.forEach(function(bookmark) { 
+      console.dir(bookmark);
+      window.saved[bookmark.id] = bookmark;
+      window.append("gooby");
+      window.append("dooby");
+    });
+  });
+}
+function initializeBookmarksDB() {
+  chrome.bookmarks.search("Tabi", function(data){
+    if(!data.length>0){
+      var obj = {};
+      obj.parentId = '2';
+      obj.url = null;
+      obj.title = "Tabi"
+
+      chrome.bookmarks.create(obj, function(data){
+        tabiId = data.id;
+      });
+
+    } else {
+      tabiId = data[0].id;
+      retrieveAllTabi();
+    }
+  })
+}
+addContext();
+var tabiId;
+window.saved = ["hello", "bye"];
+initializeBookmarksDB();
+
+chrome.commands.onCommand.addListener(function(command) {
+  if (command === 'save-and-close') {
+    saveAndCloseCurrent();
+  }
+});
+
+// chrome.runtime.onConnect.addListener(function(port){
+//   port.postMessage({"hello", "goodbye", "good evening"});
+// });
+
+
+////////////////
+
+var w = 500, h = 400;
 var labelDistance = 0;
 
-var vis = d3.select("#network").append("svg:svg").attr("width", w).attr("height", h);
+var vis = d3.select("body").append("svg:svg").attr("width", w).attr("height", h);
 
 var nodes = [];
 var labelAnchors = [];
 var labelAnchorLinks = [];
 var links = [];
+var urlStrings = ["facebook", "google", "amazon", "reddit", "tumblr", "pinterest", "venmo"];
+console.log(window.saved);
+// var port = chrome.runtime.connect({name:"background.js"});
+// port.onMessage.addListener(function(message,sender){
+//   console.log(message);
+// });
 
-for(var i = 0; i < 30; i++) {
+for(var i = 0; i < urlStrings.length; i++) {
 	var node = {
-		label : "node " + i
+		label : urlStrings[i]
 	};
 	nodes.push(node);
 	labelAnchors.push({
@@ -23,7 +111,7 @@ for(var i = 0; i < 30; i++) {
 
 for(var i = 0; i < nodes.length; i++) {
 	for(var j = 0; j < i; j++) {
-		if(Math.random() > .95)
+		if(Math.random() > .60)
 			links.push({
 				source : i,
 				target : j,
@@ -36,7 +124,6 @@ for(var i = 0; i < nodes.length; i++) {
 		weight : 1
 	});
 };
-
 var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(1).linkDistance(50).charge(-3000).linkStrength(function(x) {
 	return x.weight * 10
 });
@@ -79,6 +166,7 @@ var updateNode = function() {
 	});
 
 }
+
 
 force.on("tick", function() {
 	force2.start();
