@@ -1,7 +1,7 @@
 {
-  "name": "My Bookmarks",
-  "version": "1.1",
-  "description": "A browser action with a popup dump of all bookmarks, including search, add, edit and delete.",
+  "name": "Tabi",
+  "version": "1.0",
+  "description": "An extension for visualizing closed tabs.",
   "permissions": [
     "bookmarks",
     "storage",
@@ -11,7 +11,7 @@
   ],
   "browser_action": {
       "default_title": "My Bookmarks",
-      "default_icon": "icon.png",
+      "default_icon": "cat_logo.png",
       "default_popup": "popup.html"
   },
   "background": {
