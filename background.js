@@ -4,6 +4,7 @@
   http://docs.crossrider.com/#!/guide/scopes_background
 *************************************************************************************/
 
+<<<<<<< HEAD
 appAPI.ready(function() {
 	
 	var closedTabs = "testtesttest";
@@ -38,21 +39,24 @@ appAPI.ready(function() {
 		}
 	});
   
-	 var ulrs = {};
-	 appAPI.db.async.getKeys(function(arrayOfKeys) {
-	 	var lastKey = arrayOfKeys.length;
-	 });
-	 appAPI.db.async.getList(function(arrayOfItems) {
+appAPI.ready(function($) {
+
+	// Place your code here (ideal for handling browser button, global timers, etc.)
+		var ulrs = {};
+	appAPI.db.async.getKeys(function(arrayOfKeys) {
+		var lastKey = arrayOfKeys.length;
+	});
+	appAPI.db.async.getList(function(arrayOfItems) {
         // Process the result
         for (var i = 0; i < lastKey; i++) {
         	ulrs[arrayOfItems[i].key] = arrayOfItems[i].value;
         }
     });
-	 function key(){
-	 	var l = lastKey;
-	 	lastKey++;
-	 	return l;
-	 }
+	function key(){
+		var l = lasyKey;
+		lastKey++;
+		return l;
+	}
     function set(value){
     	appAPI.db.async.set(
         key(),
