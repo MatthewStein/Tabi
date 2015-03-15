@@ -27,22 +27,6 @@ p {
 	line-height: 20px;
     color: black;
 }
-blockquote {
-	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
-	font-size: 21px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 30px;
-}
-pre {
-	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
-	font-size: 13px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 18.5714302062988px;
-}
 .image_wrap {
     width: 100%;
 }
@@ -71,7 +55,9 @@ img {
     background: none;
     border-radius: 2px 2px 0 0;
 }
-
+.ui-tabs-panel {
+    background: rgba(244, 242, 242, 0.69) !important;
+}
 .ui-tabs .ui-tabs-nav li {
     position: relative;
     top: -5px !important;
@@ -81,11 +67,15 @@ img {
 }
 .ui-tabs-anchor{
     color: white !important;
-    text-decoration: underline !important;
+    text-decoration: none !important;
 }
 #main ul.ui-widget-header, #main ul.ui-widget-content, #main ul.ui-state-default, #main ul.ui-state-hover {
     background: none;
     border: none;
+}
+.ui-state-active {
+    background-color: rgba(33, 32, 32, 0.95) !important;
+    height: 113%;
 }
 
 #main .ui-tabs-active a {
@@ -118,4 +108,5 @@ kbd {
   font-family: "Consolas", "Menlo", "Courier", monospace;
   font-size: inherit;
   padding: 0.125rem 0.25rem 0;
-  border-radius: 3px; }
+  border-radius: 3px; 
+}
