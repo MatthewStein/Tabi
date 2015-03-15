@@ -1,6 +1,6 @@
 body {
   width: 500px;
-  height: 1200px;
+  height: 560px;
 }
 h1 {
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
@@ -69,19 +69,19 @@ img {
     padding: 0.2em 0.2em 0;
     border: none;
     background: none;
-    border-radius: 2px 2px 0 0; /*To affect only top corners*/
+    border-radius: 2px 2px 0 0;
 }
 
 .ui-tabs .ui-tabs-nav li {
-    position: relative;    /*To overwrite jquery-ui.css*/
-    top: -5px !important;  /*To overwrite jquery-ui.css*/
+    position: relative;
+    top: -5px !important;
     border: none;
 	margin: 0 0 -5px 0;
     background: none;
 }
 .ui-tabs-anchor{
-    color: white !important;                  /*To overwrite jquery-ui.css*/
-    text-decoration: underline !important;    /*To overwrite jquery-ui.css*/
+    color: white !important;
+    text-decoration: underline !important;
 }
 #main ul.ui-widget-header, #main ul.ui-widget-content, #main ul.ui-state-default, #main ul.ui-state-hover {
     background: none;
@@ -93,17 +93,29 @@ img {
    -moz-border-left-colors: none;
    -moz-border-right-colors: none;
    -moz-border-top-colors: none;
-   background-color: white;        /*To make it looks like on example pic, it is possible do do with it whatever you want*/
+   background-color: white !important;
    border-color: #CCCCCC;
    border-style: solid;
    border-width: 1px 1px 0;
-   border-radius: 5px 5px 0 0;    /*To affect only top corners*/
+   border-radius: 5px 5px 0 0;
    color: #222222;
    position: relative;
    z-index: 5;
-   color: black !important;             /*To overwrite jquery-ui.css*/
-   text-decoration: none !important;     /*To overwrite jquery-ui.css*/
+   color: black !important;
+   text-decoration: none !important;
 }    
 a:focus{
  outline: none !important;
 }
+
+kbd {
+  background-color: #ededed;
+  border-color: #dddddd;
+  color: #222222;
+  border-style: solid;
+  border-width: 1px;
+  margin: 0;
+  font-family: "Consolas", "Menlo", "Courier", monospace;
+  font-size: inherit;
+  padding: 0.125rem 0.25rem 0;
+  border-radius: 3px; }
