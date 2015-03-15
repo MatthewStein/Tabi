@@ -173,8 +173,9 @@ function saveAndCloseCurrent(){
   });
 }
 function adderUI(key, data) {
+//  var url = $('data[rel="shortcut icon"]')[0].href;
   $('#closed').append('<li><a href="' + data + '" target="_blank" class="stored_tab" id="' + key + '">' + data + "</a></li>");
-    //    var url = $('link[rel="shortcut icon"]')[0].href;
+//  console.log(url);
 //    $('#closed').append('<img src="' + url + '">');
 }
 
