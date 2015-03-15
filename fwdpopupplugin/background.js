@@ -66,7 +66,6 @@ initializeBookmarksDB();
 
 chrome.commands.onCommand.addListener(function(command) {
   if (command === 'save-and-close') {
-    alert("close");
     saveAndCloseCurrent();
   }
 });
