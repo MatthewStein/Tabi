@@ -4,6 +4,41 @@
   http://docs.crossrider.com/#!/guide/scopes_background
 *************************************************************************************/
 
+<<<<<<< HEAD
+appAPI.ready(function() {
+	
+	var closedTabs = "testtesttest";
+	
+	var popupDims = {
+		CH: {height: 280, width: 400},
+		FF: {height: 280, width: 400},
+		IE: {height: 280, width: 400},
+		SF: {height: 280, width: 400}
+	};
+    // Sets the badge text and background color
+    appAPI.browserAction.setResourceIcon('logo.png');
+	
+	if ("CHFFIESF".indexOf(appAPI.platform) !== -1) {
+		appAPI.browserAction.setPopup({
+			resourcePath:'popup.html',
+			height:popupDims[appAPI.platform].height,
+			width:popupDims[appAPI.platform].width
+		});
+	}
+	else {
+		alert('This extension is not supported on your browser');
+	}
+	
+	appAPI.message.addListener(function(msg) {
+		if (msg.type === 'close-current-tab') {
+			console.log('message received');
+			// var id = appAPI.getTabId();
+			// console.log(id);
+			// appAPI.tabs.closeTab(id);
+			$('#closed').append(msg.url);
+		}
+	});
+  
 appAPI.ready(function($) {
 
 	// Place your code here (ideal for handling browser button, global timers, etc.)
@@ -22,9 +57,9 @@ appAPI.ready(function($) {
 		lastKey++;
 		return l;
 	}
-    function set(key, value){
+    function set(value){
     	appAPI.db.async.set(
-        key,
+        key(),
         value,
         appAPI.time.yearsFromNow(10),
         function() {
