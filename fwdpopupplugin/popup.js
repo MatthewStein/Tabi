@@ -2,12 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-$(function() {
-  $(".stored_tab").click(function() {
-    removeFromStorage($(this).attr("id"));
-  });
-});
-
 // Search the bookmarks when entering the search keyword.
 $(function() {
   var lastKey;
@@ -144,10 +138,7 @@ function saveToStorage(value) {
   });
 }
 function removeFromStorage(key) {
-  chrome.storage.local.remove(key, function() {
-    // Notify that we saved.
-    message('removed');
-  });
+  chrome.storage.local.remove(key);
 }
 function getKeyForSave() {
   lastKey++;
@@ -167,8 +158,15 @@ function saveAndCloseCurrent(){
   });
 }
 function adderUI(key, data) {
-  $('#closed').append('<li><a href="' + data + '" target="_blank" class="stored_tab" id="' + key + '">' + data + "</a></li>");
+  $('#closed').append('<li><a href="' + data + '" target="_blank">' + data + "</a></li>");
 }
+
+// $(function() {
+//   $(".stored_tab").click(function() {
+//     console.log("clicked stored_tab")
+//     removeFromStorage($(this).attr("id"));
+//   });
+// });
 
 function savedIterator() {
   for (var property in saved) {

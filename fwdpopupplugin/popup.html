@@ -1,13 +1,22 @@
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <script src="popup.js"></script>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
   <style>
     body {
       width: 500px;
       height: 1200px;
     }
   </style>
+  <script>
+    $(function() {
+      $("#tabs").tabs();
+    });
+  </script>
 </head>
 <body>
   <h1>TABI</h1>
@@ -22,5 +31,7 @@
   <div id="editdialog"></div>
   <div id="deletedialog"></div>
   <div id="adddialog"></div>
+
+  </div>
 </body>
 </html>
