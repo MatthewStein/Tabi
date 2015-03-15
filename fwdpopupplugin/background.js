@@ -16,24 +16,23 @@ function saveToStorage(value) {
 }
 function removeFromStorage(key) { // it should be id so save[object].id
   chrome.bookmarks.remove(key);
-  // guess why iam here
 }
 function saveAndCloseCurrent() {
   chrome.tabs.getSelected(null, function(tab){
     saveToStorage(tab.url);
     chrome.tabs.remove(tab.id);
   });
-}/*
-function adderUI(key, data) {
-  $('#closed').append('<li><a href="'+ data +'">' + data + "</a><button onclick='removeFromStorage(" + key + ")'>remove</button></li>");
-}*//* 
-function savedIterator() {
-  for (var property in saved) {
-    if (saved.hasOwnProperty(property)) {
-      adderUI(property, saved[property]);
-    }
-  }
-}*/
+}
+//function adderUI(key, data) {
+//  $('#closed').append('<li><a href="'+ data +'">' + data + "</a><button onclick='removeFromStorage(" + key + ")'>remove</button></li>");
+//}
+//function savedIterator() {
+//  for (var property in saved) {
+//    if (saved.hasOwnProperty(property)) {
+//      adderUI(property, saved[property]);
+//    }
+//  }
+//}
 function retrieveAllTabi() {
   chrome.bookmarks.getChildren(tabiId, function(children) {
     children.forEach(function(bookmark) { 
@@ -67,6 +66,7 @@ initializeBookmarksDB();
 
 chrome.commands.onCommand.addListener(function(command) {
   if (command === 'save-and-close') {
+    alert("close");
     saveAndCloseCurrent();
   }
 });
