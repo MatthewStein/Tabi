@@ -25,6 +25,7 @@ p {
 	font-variant: normal;
 	font-weight: 400;
 	line-height: 20px;
+    color: black;
 }
 blockquote {
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
@@ -43,7 +44,66 @@ pre {
 	line-height: 18.5714302062988px;
 }
 .image_wrap {
-  position: relative;
-  height: 200px;
-  width: 257px;
+    width: 100%;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#tabi-logo {
+  height: 127px;
+  padding-bottom: 13px;
+}
+#htb-logo {
+    height: 180px;
+}
+
+.ui-tabs-nav {
+    background-color: #222 !important; /*To overwrite jquery-ui.css*/
+    height: 25px;                        /*To stop nav block scaling of tab size*/
+}
+
+.ui-tabs .ui-tabs-nav {
+    margin: 0;
+    padding: 0.2em 0.2em 0;
+    border: none;
+    background: none;
+    border-radius: 2px 2px 0 0; /*To affect only top corners*/
+}
+
+.ui-tabs .ui-tabs-nav li {
+    position: relative;    /*To overwrite jquery-ui.css*/
+    top: -5px !important;  /*To overwrite jquery-ui.css*/
+    border: none;
+	margin: 0 0 -5px 0;
+    background: none;
+}
+.ui-tabs-anchor{
+    color: white !important;                  /*To overwrite jquery-ui.css*/
+    text-decoration: underline !important;    /*To overwrite jquery-ui.css*/
+}
+#main ul.ui-widget-header, #main ul.ui-widget-content, #main ul.ui-state-default, #main ul.ui-state-hover {
+    background: none;
+    border: none;
+}
+
+#main .ui-tabs-active a {
+   -moz-border-bottom-colors: none;
+   -moz-border-left-colors: none;
+   -moz-border-right-colors: none;
+   -moz-border-top-colors: none;
+   background-color: white;        /*To make it looks like on example pic, it is possible do do with it whatever you want*/
+   border-color: #CCCCCC;
+   border-style: solid;
+   border-width: 1px 1px 0;
+   border-radius: 5px 5px 0 0;    /*To affect only top corners*/
+   color: #222222;
+   position: relative;
+   z-index: 5;
+   color: black !important;             /*To overwrite jquery-ui.css*/
+   text-decoration: none !important;     /*To overwrite jquery-ui.css*/
+}    
+a:focus{
+ outline: none !important;
 }

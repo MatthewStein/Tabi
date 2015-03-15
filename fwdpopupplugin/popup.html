@@ -8,28 +8,36 @@
 
 </head>
 <body>
-  <h1>Tabi</h1>
   <div class="image_wrap"> 
-    <img id="cat_button" src="cat.jpeg" title="Alt+S (Mac), Ctrl+Shift+O (Windows)"></img>
+    <img id="tabi-logo" src="img/tabi-logo.png">
   </div>
+    
   <div id="tabs">
     <ul>
-    <li><a href="#tabs-1">Closed</a></li>
+    <li><a href="#tabs-1">Closed Tabs</a></li>
     <li><a href="#tabs-2">Bookmarks</a></li>
+    <li><a href="#tabs-3">About</a></li>
     </ul>
       
     <div id="tabs-1">
-        <p><b>Closed Tabs</b></p>
         <div id="closed"></div>
     </div>
     
     <div id="tabs-2">
-        <p><b>Bookmarks</b></p>
         <div>Search Bookmarks: <input id="search"></div>
         <div id="bookmarks"></div>
         <div id="editdialog"></div>
         <div id="deletedialog"></div>
         <div id="adddialog"></div>
+    </div>
+      
+    <div id="tabs-3">
+        <p>Keyboard shortcuts to close and save current tab</p>
+        <p>Mac: Alt + S</p>
+        <p>Windows: Control + Shift + O</p>
+        <br>
+        <p>Created by Matthew Stein, Forest Tong, Damodar Sojka, and Tharald Solheim for Hack the Burgh, March 2015</p>
+        <div class="image_wrap"><img id="htb-logo" src="img/HackTheBurgh.png"></div>
     </div>
   </div>
   <script src="d3.v2.js"></script>
