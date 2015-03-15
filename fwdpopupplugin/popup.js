@@ -2,23 +2,23 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+$(function() {
+  $(".stored_tab").click(function() {
+    removeFromStorage($(this).attr("id"));
+  });
+});
+
 // Search the bookmarks when entering the search keyword.
 $(function() {
   var lastKey;
+  var saved;
   initializeKey();
 
-  $('#save').click(function() {
-    saveToStorage('testKey' + theIndex,'testVal');
-  });
-  $('#remove').click(function() {
-    removeFromStorage('');
-  });
   $('#search').change(function() {
      $('#bookmarks').empty();
      dumpBookmarks($('#search').val());
   });
   $('#saveAndCloseCurrent').click(function() {
-      alert("saveAndCloseCurrent");
       saveAndCloseCurrent();
     })
 });
@@ -136,8 +136,9 @@ function dumpNode(bookmarkNode, query) {
   return li;
 }
 function saveToStorage(value) {
-  key = getKeyForSave();
-  chrome.storage.local.set({key: value}, function() {
+  var obj = {};
+  obj[getKeyForSave()] = value;
+  chrome.storage.local.set(obj, function() {
     // Notify that we saved.
     message('added');
   });
@@ -149,21 +150,32 @@ function removeFromStorage(key) {
   });
 }
 function getKeyForSave() {
-  var l = lastKey;
   lastKey++;
-  return l;
+  return lastKey;
 }
 function initializeKey() {
   chrome.storage.local.get(null, function(items) {
     lastKey = Object.keys(items).length;
+    saved = items;
+    savedIterator();
   });
 }
 function saveAndCloseCurrent(){
   chrome.tabs.getSelected(null, function(tab){
-    alert(tab);alert("something");
     saveToStorage(tab.url);
     chrome.tabs.remove(tab.id);
   });
+}
+function adderUI(key, data) {
+  $('#closed').append('<li><a href="' + data + '" target="_blank" class="stored_tab" id="' + key + '">' + data + "</a></li>");
+}
+
+function savedIterator() {
+  for (var property in saved) {
+    if (saved.hasOwnProperty(property)) {
+      adderUI(property, saved[property]);
+    }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
