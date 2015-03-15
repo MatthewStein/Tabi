@@ -36,7 +36,7 @@ for(var i = 0; i < nodes.length; i++) {
 		weight : 1
 	});
 };
-node += falafelbutt
+
 var force = d3.layout.force().size([w, h]).nodes(nodes).links(links).gravity(1).linkDistance(50).charge(-3000).linkStrength(function(x) {
 	return x.weight * 10
 });
@@ -79,7 +79,6 @@ var updateNode = function() {
 	});
 
 }
-
 
 force.on("tick", function() {
 	force2.start();
