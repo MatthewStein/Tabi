@@ -20,8 +20,8 @@
   "commands": {
       "save-and-close": {
         "suggested_key": {
-        "default": "Ctrl+Shift+F",
-        "mac": "Command+Shift+O"
+        "default": "Ctrl+Shift+O",
+        "mac": "Alt+S"
       },
       "description": "Toggle feature foo"
     }
