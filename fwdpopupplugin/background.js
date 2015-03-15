@@ -9,34 +9,32 @@ function addContext() {
 }
 function saveToStorage(value) {
   var obj = {};
-  obj.parentId = tabbyId;
+  obj.parentId = tabiId;
   obj.url = value;
   obj.title = value;
   chrome.bookmarks.create(obj);
 }
 function removeFromStorage(key) { // it should be id so save[object].id
   chrome.bookmarks.remove(key);
-  // guess why iam here
 }
 function saveAndCloseCurrent() {
   chrome.tabs.getSelected(null, function(tab){
     saveToStorage(tab.url);
     chrome.tabs.remove(tab.id);
   });
-}/*
-function adderUI(key, data) {
-  $('#closed').append('<li><a href="'+ data +'">' + data + "</a><button onclick='removeFromStorage(" + key + ")'>remove</button></li>"); 
-  // guess why iam here
-}*//* 
-function savedIterator() {
-  for (var property in saved) {
-    if (saved.hasOwnProperty(property)) {
-      adderUI(property, saved[property]);
-    }
-  }
-}*/
-function retriveAllTabby() {
-  chrome.bookmarks.getChildren(tabbyId, function(children) {
+}
+//function adderUI(key, data) {
+//  $('#closed').append('<li><a href="'+ data +'">' + data + "</a><button onclick='removeFromStorage(" + key + ")'>remove</button></li>");
+//}
+//function savedIterator() {
+//  for (var property in saved) {
+//    if (saved.hasOwnProperty(property)) {
+//      adderUI(property, saved[property]);
+//    }
+//  }
+//}
+function retrieveAllTabi() {
+  chrome.bookmarks.getChildren(tabiId, function(children) {
     children.forEach(function(bookmark) { 
       console.dir(bookmark);
       saved[bookmark.id] = bookmark;
@@ -44,30 +42,31 @@ function retriveAllTabby() {
   });
 }
 function initializeBookmarksDB() {
-  chrome.bookmarks.search("Tabby", function(data){
+  chrome.bookmarks.search("Tabi", function(data){
     if(!data.length>0){
       var obj = {};
       obj.parentId = '2';
       obj.url = null;
-      obj.title = "Tabby"
+      obj.title = "Tabi"
 
       chrome.bookmarks.create(obj, function(data){
-        tabbyId = data.id;
+        tabiId = data.id;
       });
 
     } else {
-      tabbyId = data[0].id;
-      retriveAllTabby();
+      tabiId = data[0].id;
+      retrieveAllTabi();
     }
   })
 }
 addContext();
-var tabbyId;
+var tabiId;
 var saved = {};
 initializeBookmarksDB();
 
 chrome.commands.onCommand.addListener(function(command) {
   if (command === 'save-and-close') {
+    alert("close");
     saveAndCloseCurrent();
   }
 });
