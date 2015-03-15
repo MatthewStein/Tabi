@@ -4,7 +4,6 @@
   http://docs.crossrider.com/#!/guide/scopes_background
 *************************************************************************************/
 
-<<<<<<< HEAD
 appAPI.ready(function() {
 	
 	var closedTabs = "testtesttest";
