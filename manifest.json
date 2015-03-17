@@ -21,8 +21,8 @@
       "save-and-close": {
         "suggested_key": {
         "default": "Ctrl+Shift+O",
-	"linux": "Ctrl+B",
-        "mac": "Alt+S"
+        "mac": "Alt+S",
+        "linux": "Ctrl+B"
       },
       "description": "Toggle feature foo"
     }

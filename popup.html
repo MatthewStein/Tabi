@@ -1,50 +1,48 @@
-<!DOCTYPE html>
 <html>
 <head>
-<!-- This meta tag is relevant only for IE -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <script src="jquery-1.11.2.min.js"></script>
+  <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+  <link type="text/css" rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.min.css">
+  <script src="popup.js"></script>
+  <link type="text/css" rel="stylesheet" href="popup.css">
 
-<script type="text/javascript">
-
-function crossriderMain($) {
-			
-	// Sends a message to the active tab to perform the desired action in the Extension Page Scope
-	// For more information about scopes, see http://docs.crossrider.com/#!/guide/scopes
-	// Note: Requires a listener on the active tab
-
-	// Include Resources
-	eval(appAPI.resources.get("jqueryui/jquery-ui-1.10.3.min.js"));
-	appAPI.resources.includeCSS("jqueryui/jquery-ui-1.10.3.min.css");
-	appAPI.resources.includeCSS("popup.css");
-
-	// $('#home').click(function() {
-	// 	// Displays an alert
-	// 	appAPI.openURL({url:'http://crossrider.com', where:'tab'});
-	// });
-	// $('#alert').click(function() {
-	// 	// Displays an alert
-	// 	appAPI.message.toActiveTab({action: 'alert', data: 'Hello World!'});
-	// });
-	// $('#paint').click(function() {
-	// 	// Change the background color to Red
-	// 	appAPI.message.toActiveTab({action: 'set-bg-color', data: '#FF0000'});
-	// });
-	
-	$('#closed').append( closedTabs );
-	
-	$('#close-tab').click(function() {
-		var url = $(location).attr('href')
-		$('#closed').append(url);
-		closedTabs += url;
-	})
-}
-</script>
 </head>
 <body>
-<div id="closed">
-	<button id="close-tab">Close current tab</button>
-	<p>Closed websites:</p>
-	
-</div>
+  <div class="image_wrap"> 
+    <img id="tabi-logo" src="img/tabi-logo.png">
+  </div>
+    
+  <div id="tabs">
+    <ul>
+    <li><a href="#tabs-1">Closed Tabs</a></li>
+    <li><a href="#tabs-2">Bookmarks</a></li>
+    <li><a href="#tabs-3">About</a></li>
+    </ul>
+      
+    <div id="tabs-1">
+        <div id="closed"></div>
+    </div>
+    
+    <div id="tabs-2">
+        <div>Search Bookmarks: <input id="search"></div>
+        <div id="bookmarks"></div>
+        <div id="editdialog"></div>
+        <div id="deletedialog"></div>
+        <div id="adddialog"></div>
+    </div>
+      
+    <div id="tabs-3">
+        <p>Keyboard shortcuts to close and save current tab:</p>
+	<p>Linux: <kbd>Ctrl</kbd> + <kbd>B</kbd> </p>
+        <p>Mac: <kbd>Option</kbd> + <kbd>S</kbd> </p>
+        <p>Windows: <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd></p>
+        <p>Created by Matthew Stein, Forest Tong, Damodar Sojka, and Tharald Solheim for Hack the Burgh, March 2015</p>
+        <div class="image_wrap"><img id="htb-logo" src="img/HackTheBurgh.png"></div>
+    </div>
+  </div>
+    
+  <script src="d3.v2.js"></script>
+  <script src="d3/d3.min.js"></script>
+  <script src="network.js"></script>
 </body>
 </html>
